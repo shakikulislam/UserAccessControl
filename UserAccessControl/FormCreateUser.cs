@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UserAccessControl
 {
-    public partial class Form1 : Form
+    public partial class FormCreateUser : Form
     {
-        public Form1()
+        public FormCreateUser()
         {
             InitializeComponent();
         }
