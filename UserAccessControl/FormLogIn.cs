@@ -16,5 +16,12 @@ namespace UserAccessControl
         {
             InitializeComponent();
         }
+
+        private void buttonLogIn_Click(object sender, EventArgs e)
+        {
+            FormHome formHome = new FormHome();
+            this.Hide();
+            formHome.Show();
+        }
     }
 }
