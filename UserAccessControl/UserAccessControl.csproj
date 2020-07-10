@@ -68,11 +68,11 @@
     <Compile Include="FormStatus.Designer.cs">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUserPermition.cs">
+    <Compile Include="FormUserRolePermition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormUserPermition.Designer.cs">
-      <DependentUpon>FormUserPermition.cs</DependentUpon>
+    <Compile Include="FormUserRolePermition.Designer.cs">
+      <DependentUpon>FormUserRolePermition.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,8 +88,8 @@
     <EmbeddedResource Include="FormStatus.resx">
       <DependentUpon>FormStatus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormUserPermition.resx">
-      <DependentUpon>FormUserPermition.cs</DependentUpon>
+    <EmbeddedResource Include="FormUserRolePermition.resx">
+      <DependentUpon>FormUserRolePermition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,6 +100,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\FormUserRolePermition.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

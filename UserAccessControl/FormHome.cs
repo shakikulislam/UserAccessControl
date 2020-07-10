@@ -30,7 +30,7 @@ namespace UserAccessControl
 
         private void userPermitionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUserPermition formUserPermition=new FormUserPermition();
+            FormUserRolePermition formUserPermition=new FormUserRolePermition();
             formUserPermition.ShowDialog();
         }
 
