@@ -37,7 +37,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxUserType = new System.Windows.Forms.ComboBox();
+            this.comboBoxUserRole = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -122,28 +122,25 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(78, 300);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 19);
+            this.label5.Size = new System.Drawing.Size(70, 19);
             this.label5.TabIndex = 9;
-            this.label5.Text = "User Type";
+            this.label5.Text = "User Role";
             // 
-            // comboBoxUserType
+            // comboBoxUserRole
             // 
-            this.comboBoxUserType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxUserType.FormattingEnabled = true;
-            this.comboBoxUserType.Items.AddRange(new object[] {
-            "Admin",
-            "User"});
-            this.comboBoxUserType.Location = new System.Drawing.Point(82, 323);
-            this.comboBoxUserType.Name = "comboBoxUserType";
-            this.comboBoxUserType.Size = new System.Drawing.Size(246, 27);
-            this.comboBoxUserType.TabIndex = 3;
+            this.comboBoxUserRole.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxUserRole.FormattingEnabled = true;
+            this.comboBoxUserRole.Location = new System.Drawing.Point(82, 323);
+            this.comboBoxUserRole.Name = "comboBoxUserRole";
+            this.comboBoxUserRole.Size = new System.Drawing.Size(246, 27);
+            this.comboBoxUserRole.TabIndex = 3;
             // 
             // FormCreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 469);
-            this.Controls.Add(this.comboBoxUserType);
+            this.Controls.Add(this.comboBoxUserRole);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.label4);
@@ -172,6 +169,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxUserType;
+        private System.Windows.Forms.ComboBox comboBoxUserRole;
     }
 }
