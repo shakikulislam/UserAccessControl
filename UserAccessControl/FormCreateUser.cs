@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserAccessControl
@@ -21,13 +15,10 @@ namespace UserAccessControl
 
         }
 
-
         private static SqlConnection _sqlConnection = new SqlConnection(@"Data Source=SHAKIKUL-PC\SQLEXPRESS; Initial Catalog=UserAccessControlDB; User Id=sa; Password=sa123456789");
         private static SqlCommand _sqlCommand;
         private static SqlDataAdapter _sqlDataAdapter;
-        private static SqlDataReader _sqlDataReader;
         private static DataTable _dataTable;
-        private DataSet _dataSet;
 
         private void LoadRole()
         {
@@ -39,8 +30,6 @@ namespace UserAccessControl
             _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
             _dataTable = new DataTable();
             _sqlDataAdapter.Fill(_dataTable);
-            _dataSet = new DataSet();
-            _sqlDataAdapter.Fill(_dataSet);
 
             if (_dataTable.Rows.Count > 0)
             {
@@ -52,11 +41,11 @@ namespace UserAccessControl
             }
             _sqlConnection.Close();
         }
-
-
+        
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             // Database Connection
+            _sqlConnection.Close();
             _sqlConnection.Open();
             _sqlCommand=new SqlCommand();
             _sqlCommand.Connection = _sqlConnection;

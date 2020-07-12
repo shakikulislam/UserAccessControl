@@ -126,7 +126,6 @@
             this.checkBoxUser.TabIndex = 0;
             this.checkBoxUser.Text = "User";
             this.checkBoxUser.UseVisualStyleBackColor = true;
-            this.checkBoxUser.CheckedChanged += new System.EventHandler(this.checkBoxUser_CheckedChanged);
             // 
             // checkBoxCreate
             // 
@@ -137,7 +136,6 @@
             this.checkBoxCreate.TabIndex = 5;
             this.checkBoxCreate.Text = "Create";
             this.checkBoxCreate.UseVisualStyleBackColor = true;
-            this.checkBoxCreate.CheckedChanged += new System.EventHandler(this.checkBoxCreate_CheckedChanged);
             // 
             // checkBoxExit
             // 
@@ -148,7 +146,6 @@
             this.checkBoxExit.TabIndex = 4;
             this.checkBoxExit.Text = "Exit";
             this.checkBoxExit.UseVisualStyleBackColor = true;
-            this.checkBoxExit.CheckedChanged += new System.EventHandler(this.checkBoxExit_CheckedChanged);
             // 
             // checkBoxFile
             // 
@@ -159,7 +156,6 @@
             this.checkBoxFile.TabIndex = 3;
             this.checkBoxFile.Text = "File";
             this.checkBoxFile.UseVisualStyleBackColor = true;
-            this.checkBoxFile.CheckedChanged += new System.EventHandler(this.checkBoxFile_CheckedChanged);
             // 
             // buttonUpdate
             // 
@@ -187,6 +183,7 @@
             // panelAddRole
             // 
             this.panelAddRole.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panelAddRole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelAddRole.Controls.Add(this.buttonAdd);
             this.panelAddRole.Controls.Add(this.dataGridViewRole);
             this.panelAddRole.Controls.Add(this.textBoxRole);

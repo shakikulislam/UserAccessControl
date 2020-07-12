@@ -15,14 +15,12 @@ namespace UserAccessControl
             LoadRole();
         }
 
-
         private static SqlConnection _sqlConnection= new SqlConnection(@"Data Source=SHAKIKUL-PC\SQLEXPRESS; Initial Catalog=UserAccessControlDB; User Id=sa; Password=sa123456789");
         private static SqlCommand _sqlCommand;
         private static SqlDataAdapter _sqlDataAdapter;
         private static SqlDataReader _sqlDataReader;
         private static DataTable _dataTable;
         private DataSet _dataSet;
-
 
         private static int _file;           // Dtabase id 1, List id 0
         private static int _exit;           // Dtabase id 2, List id 1
@@ -37,34 +35,32 @@ namespace UserAccessControl
 
         private void LoadRole()
         {
+            _sqlConnection.Close();
             _sqlConnection.Open();
             _sqlCommand=new SqlCommand();
             _sqlCommand.Connection = _sqlConnection;
             _sqlCommand.CommandText = "SELECT UserRole AS 'User Role' FROM TableUserRole";
             _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
-            _dataTable=new DataTable();
-            _sqlDataAdapter.Fill(_dataTable);
             _dataSet=new DataSet();
             _sqlDataAdapter.Fill(_dataSet);
             if (_dataSet.Tables.Count>0)
             {
                 dataGridViewRole.DataSource = _dataSet.Tables[0];
                 dataGridViewRole.RowHeadersVisible = false;
-            }
-            if (_dataTable.Rows.Count>0)
-            {
+
                 comboBoxRole.Items.Clear();
-                foreach (DataRow dataRow in _dataTable.Rows)
+                foreach (DataRow dataRow in _dataSet.Tables[0].Rows)
                 {
                     comboBoxRole.Items.Add(dataRow["User Role"]);
                 }
+
             }
-            _sqlConnection.Close();
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
             // Load list of menu id
+            _sqlConnection.Close();
             _sqlConnection.Open();
             _sqlCommand = new SqlCommand();
             _sqlCommand.Connection = _sqlConnection;
@@ -94,59 +90,10 @@ namespace UserAccessControl
             // Update menu permition
             _sqlCommand.CommandText="UPDATE TableUserRole SET MenuId='"+_selectetMenu+"' WHERE UserRole='"+comboBoxRole.Text+"'";
             var isSuccess = _sqlCommand.ExecuteNonQuery();
-            labelRoleMessage.Text = isSuccess > 0 ? comboBoxRole.Text+ " menu permition is success..." : "";
+            labelRoleMessage.Text = isSuccess > 0 ? comboBoxRole.Text + " menu permition is success..." : "";
 
-            _sqlConnection.Close();
         }
         
-        private void checkBoxFile_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxFile.Checked==true)
-            {
-                checkBoxExit.Checked = true;
-            }
-            else
-            {
-                checkBoxExit.Checked = false;
-            }
-        }
-
-        private void checkBoxExit_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxExit.Checked == true)
-            {
-                checkBoxFile.Checked = true;
-            }
-            else
-            {
-                checkBoxFile.Checked = false;
-            }
-        }
-
-        private void checkBoxCreate_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxCreate.Checked==true)
-            {
-                checkBoxUser.Checked = true;
-            }
-            else
-            {
-                checkBoxUser.Checked = false;
-            }
-        }
-
-        private void checkBoxUser_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxUser.Checked == true)
-            {
-                checkBoxCreate.Checked = true;
-            }
-            else
-            {
-                checkBoxCreate.Checked = false;
-            }
-        }
-
         private void labelAddRole_Click(object sender, EventArgs e)
         {
             if (panelAddRole.Visible==false)
@@ -161,6 +108,7 @@ namespace UserAccessControl
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            _sqlConnection.Close();
             _sqlConnection.Open();
             _sqlCommand=new SqlCommand();
             _sqlCommand.Connection = _sqlConnection;
@@ -181,25 +129,63 @@ namespace UserAccessControl
                     panelAddRole.Visible = false;
                 }
             }
-            _sqlConnection.Close();
 
             LoadRole();
         }
 
         private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //_sqlConnection.Open();
-            //_sqlCommand = new SqlCommand();
-            //_sqlCommand.Connection = _sqlConnection;
-            //_sqlCommand.CommandText=""
-            
+            checkBoxFile.Checked = false;
+            checkBoxExit.Checked = false;
+            checkBoxCreate.Checked = false;
+            checkBoxUser.Checked = false;
+            checkBoxUserPermition.Checked = false;
+            checkBoxStatus.Checked = false;
 
+            _sqlConnection.Close();
+            _sqlConnection.Open();
+            _sqlCommand = new SqlCommand();
+            _sqlCommand.Connection = _sqlConnection;
+            _sqlCommand.CommandText = "SELECT *FROM TableUserRole WHERE UserRole ='" + comboBoxRole.Text + "'";
+            _sqlDataReader = _sqlCommand.ExecuteReader();
+            if (_sqlDataReader.Read())
+            {
 
+                _sqlCommand.CommandText = "SELECT MenuName FROM TableMenuList WHERE id in (" +
+                                          _sqlDataReader["MenuId"].ToString() + ")";
+                _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
+                _dataTable = new DataTable();
+                _sqlDataReader.Close();
+                _sqlDataAdapter.Fill(_dataTable);
 
-            //_sqlConnection.Close();
+                foreach (DataRow dataRow in _dataTable.Rows)
+                {
+                    switch (dataRow["MenuName"].ToString())
+                    {
+                        case "fileToolStripMenuItem":
+                            checkBoxFile.Checked = true;
+                            break;
+                        case "exitToolStripMenuItem":
+                            checkBoxExit.Checked = true;
+                            break;
+                        case "createToolStripMenuItem":
+                            checkBoxCreate.Checked = true;
+                            break;
+                        case "userToolStripMenuItem":
+                            checkBoxUser.Checked = true;
+                            break;
+                        case "userPermitionToolStripMenuItem":
+                            checkBoxUserPermition.Checked = true;
+                            break;
+                        case "statusToolStripMenuItem":
+                            checkBoxStatus.Checked = true;
+                            break;
+                    }
+                }
+
+            }
+
         }
-
-
 
     }
 }

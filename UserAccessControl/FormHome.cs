@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserAccessControl
@@ -16,9 +10,9 @@ namespace UserAccessControl
         public FormHome()
         {
             InitializeComponent();
+
             GetByMenu();
         }
-
 
         private static SqlConnection _sqlConnection = new SqlConnection(@"Data Source=SHAKIKUL-PC\SQLEXPRESS; Initial Catalog=UserAccessControlDB; User Id=sa; Password=sa123456789");
         private static SqlCommand _sqlCommand;
@@ -55,10 +49,11 @@ namespace UserAccessControl
         {
             labelName.Text = FormLogIn._name;
 
+            _sqlConnection.Close();
             _sqlConnection.Open();
             _sqlCommand=new SqlCommand();
             _sqlCommand.Connection = _sqlConnection;
-            _sqlCommand.CommandText = "SELECT MenuId FROM TableUserRole WHERE UserRole='" + FormLogIn._userName + "'";
+            _sqlCommand.CommandText = "SELECT MenuId FROM TableUserRole WHERE UserRole='" + FormLogIn._userRole + "'";
             _sqlDataAdapter=new SqlDataAdapter(_sqlCommand);
             _dataSet=new DataSet();
             _sqlDataAdapter.Fill(_dataSet);
@@ -67,8 +62,6 @@ namespace UserAccessControl
 
             _sqlCommand.CommandText = "SELECT *FROM TableMenuList WHERE id in (" + _menuId + ")";
             _sqlDataAdapter=new SqlDataAdapter(_sqlCommand);
-            _dataSet = new DataSet();
-            _sqlDataAdapter.Fill(_dataSet);
             _dataTable = new DataTable();
             _sqlDataAdapter.Fill(_dataTable);
 
@@ -80,7 +73,6 @@ namespace UserAccessControl
                     {
                         menuItem.Visible = true;
                     }
-                    //AddDropDownMenu(_dataTable, menuItem);
 
                     foreach (ToolStripMenuItem dropDownItem in menuItem.DropDownItems)
                     {
@@ -91,7 +83,13 @@ namespace UserAccessControl
                     }
                 }
             }
-            _sqlConnection.Close();
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLogIn formLogIn=new FormLogIn();
+            this.Close();
+            formLogIn.Show();
         }
 
     }

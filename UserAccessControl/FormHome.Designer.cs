@@ -36,6 +36,7 @@
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userPermitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripHome.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +59,8 @@
             this.fileToolStripMenuItem,
             this.createToolStripMenuItem,
             this.userPermitionToolStripMenuItem,
-            this.statusToolStripMenuItem});
+            this.statusToolStripMenuItem,
+            this.logOutToolStripMenuItem});
             this.menuStripHome.Location = new System.Drawing.Point(0, 0);
             this.menuStripHome.Name = "menuStripHome";
             this.menuStripHome.Size = new System.Drawing.Size(686, 24);
@@ -114,6 +116,14 @@
             this.statusToolStripMenuItem.Visible = false;
             this.statusToolStripMenuItem.Click += new System.EventHandler(this.statusToolStripMenuItem_Click);
             // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,5 +152,6 @@
         private System.Windows.Forms.ToolStripMenuItem userPermitionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
     }
 }
