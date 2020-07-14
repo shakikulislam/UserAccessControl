@@ -49,7 +49,7 @@
             this.labelName.Location = new System.Drawing.Point(0, 24);
             this.labelName.Name = "labelName";
             this.labelName.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelName.Size = new System.Drawing.Size(686, 20);
+            this.labelName.Size = new System.Drawing.Size(518, 20);
             this.labelName.TabIndex = 1;
             this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -63,7 +63,7 @@
             this.logOutToolStripMenuItem});
             this.menuStripHome.Location = new System.Drawing.Point(0, 0);
             this.menuStripHome.Name = "menuStripHome";
-            this.menuStripHome.Size = new System.Drawing.Size(686, 24);
+            this.menuStripHome.Size = new System.Drawing.Size(518, 24);
             this.menuStripHome.TabIndex = 2;
             // 
             // fileToolStripMenuItem
@@ -78,7 +78,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Visible = false;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 411);
+            this.ClientSize = new System.Drawing.Size(518, 326);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.menuStripHome);
             this.MainMenuStrip = this.menuStripHome;

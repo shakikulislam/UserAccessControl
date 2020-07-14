@@ -68,6 +68,7 @@ namespace UserAccessControl
 
             foreach (DataRow dataRow in _dataTable.Rows)
             {
+                //for main menu
                 foreach (ToolStripMenuItem menuItem in menuStripHome.Items)
                 {
                     if (dataRow["MenuName"].ToString() == menuItem.Name)
@@ -75,6 +76,7 @@ namespace UserAccessControl
                         menuItem.Visible = true;
                     }
 
+                    //for sub menu
                     foreach (ToolStripMenuItem dropDownItem in menuItem.DropDownItems)
                     {
                         if (dataRow["MenuName"].ToString()==dropDownItem.Name)

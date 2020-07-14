@@ -151,8 +151,7 @@ namespace UserAccessControl
             if (_sqlDataReader.Read())
             {
 
-                _sqlCommand.CommandText = "SELECT MenuName FROM TableMenuList WHERE id in (" +
-                                          _sqlDataReader["MenuId"].ToString() + ")";
+                _sqlCommand.CommandText = "SELECT MenuName FROM TableMenuList WHERE id in (" +_sqlDataReader["MenuId"].ToString() + ")";
                 _sqlDataAdapter = new SqlDataAdapter(_sqlCommand);
                 _dataTable = new DataTable();
                 _sqlDataReader.Close();
